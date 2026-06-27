@@ -1,0 +1,327 @@
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    /* ═══════════════════════════════
+       HEADER
+    ═══════════════════════════════ */
+    .header {
+      background: #ffffff;
+      border-bottom: 3px solid #b0b0b0;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    /* Left logo */
+    .header-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      /* border-right: 1px solid #ccc; */
+      width: 90px;
+      flex-shrink: 0;
+    }
+    .header-left img {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+    }
+
+    /* Middle */
+    .header-middle {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      /* border-right: 1px solid #ccc; */
+    }
+
+    /* Top bar — date, font, hindi */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 5px 20px;
+      /* border-bottom: 1px solid #ddd; */
+      background: #fff;
+    }
+    .top-bar .datetime { font-size: 13px; font-weight: 700; color: #222; }
+    .top-bar .sep { color: #999; font-size: 13px; }
+    .top-bar .font-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: Arial, sans-serif; color: #333; padding: 0; line-height: 1;
+    }
+    .top-bar .font-btn:hover { color: #c00; }
+    .top-bar .font-sm { font-size: 11px; }
+    .top-bar .font-md { font-size: 14px; font-weight: 700; }
+    .top-bar .font-lg { font-size: 17px; font-weight: 700; }
+    .top-bar .hindi {
+      font-size: 14px; font-weight: 700;
+      color: #1a237e; text-decoration: none;
+    }
+    .top-bar .hindi:hover { text-decoration: underline; color: #c00; }
+
+    /* Nav bar */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 12px;
+      height: 42px;
+      background: #fff;
+    }
+    .nav-home {
+      font-size: 17px; color: #444; text-decoration: none;
+      padding: 0 10px 0 0; display: flex; align-items: center;
+    }
+    .nav-home:hover { color: #c00; }
+    .nav-login {
+      background: #1a237e; color: #fff;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 6px 14px; text-decoration: none;
+      border-radius: 3px; white-space: nowrap; margin-right: 10px;
+    }
+    .nav-login:hover { background: #0d1457; }
+    .nav-link {
+      font-size: 13px; font-weight: 600; color: #222;
+      text-decoration: none; padding: 0 10px;
+      white-space: nowrap; height: 100%;
+      display: flex; align-items: center;
+    }
+    .nav-link:hover { color: #c00; }
+    .nav-trains { color: #d32f2f; }
+    .nav-trains:hover { color: #b71c1c; }
+    .nav-ewallet { color: #d32f2f; }
+    .nav-cashback {
+      background: #1a237e; color: #fff;
+      font-size: 12px; font-weight: 600;
+      padding: 6px 12px; text-decoration: none;
+      border-radius: 3px; white-space: nowrap; margin: 0 6px;
+    }
+    .nav-cashback:hover { background: #0d1457; }
+
+    /* Right logo */
+    .header-right {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 6px 12px; width: 90px; flex-shrink: 0; gap: 2px;
+    }
+    .header-right img { width: 52px; height: 52px; object-fit: contain; }
+    .header-right .irctc-text {
+      font-size: 13px; font-weight: 700;
+      color: #1a237e; letter-spacing: 1px;
+    }
+
+    /* ═══════════════════════════════
+       MAIN — background image area
+    ═══════════════════════════════ */
+    .main {
+      position: relative;        /* makes card overlay possible */
+      width: 100%;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    /* Background train image — fills the whole .main */
+    .main-bg {
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      object-fit: cover;
+      object-position: center right;
+      display: block;
+    }
+
+    /* "INDIAN RAILWAYS" text on the right — like the real site */
+    .main-text {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      text-align: center;
+      z-index: 5;
+    }
+    .main-text h1 {
+      font-size: 48px;
+      font-weight: 900;
+      color: #1a237e;
+      letter-spacing: 0.04em;
+      text-shadow: 2px 2px 8px rgba(255,255,255,0.6);
+    }
+    .main-text p {
+      font-size: 18px;
+      color: #1a237e;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .main-text p span { margin: 0 10px; }
+
+    /* ═══════════════════════════════
+       CARD — overlays top-left of .main
+    ═══════════════════════════════ */
+    .card {
+      position: absolute;  
+      margin-top: 20px;
+      margin-left: 30px;        /* float on top of image */
+      top: 0;
+      left: 0;
+      width: 440px;
+      background: rgba(255, 255, 255, 0.97);
+      /* border-radius: 0 0 10px 0;   only bottom-right corner rounded */
+      overflow: hidden;
+      box-shadow: 4px 4px 24px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+
+    /* PNR STATUS | CHARTS VACANCY */
+    .card-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .card-tab {
+      background: #1a237e; color: #fff;
+      display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+      padding: 12px 16px; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.05em;
+      text-decoration: none; cursor: pointer;
+      border: none; transition: background 0.2s;
+    }
+    .card-tab:first-child { border-right: 2px solid #fff; }
+    .card-tab:hover { background: #0d1457; }
+    .card-tab .tab-icon { font-size: 17px; }
+
+    /* Form body */
+    .card-body { padding: 22px 28px 26px; }
+
+    .form-title {
+      text-align: center;
+      font-size: 22px; font-weight: 800;
+      color: #1a237e; letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+
+    /* Row 1: From swap To */
+    .row-from-to {
+      display: grid;
+      grid-template-columns: 1fr 36px 1fr;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .input-box {
+      display: flex; align-items: center; gap: 8px;
+      border: 1.5px solid #b0bec5; border-radius: 4px;
+      padding: 10px 12px; background: #fff; transition: border-color 0.2s;
+    }
+    .input-box:focus-within { border-color: #1a237e; }
+    .input-box .icon { color: #1a237e; font-size: 14px; flex-shrink: 0; }
+    .input-box input {
+      border: none; outline: none; font-size: 14px;
+      color: #555; width: 100%;
+      font-family: Arial, sans-serif; background: transparent;
+    }
+    .input-box input::placeholder { color: #999; }
+
+    .swap-btn {
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; background: none; border: none;
+      font-size: 18px; color: #1a237e;
+      transition: transform 0.3s; width: 36px;
+    }
+    .swap-btn:hover { transform: rotate(180deg); color: #e65100; }
+
+    /* Row 2: Date | All Classes */
+    .row-date-class {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 14px;
+    }
+    .date-wrapper { display: flex; flex-direction: column; gap: 3px; }
+    .date-label {
+      font-size: 10px; font-weight: 700;
+      color: #1a237e; letter-spacing: 0.04em;
+    }
+    .date-box {
+      display: flex; align-items: center; gap: 8px;
+      border: 1.5px solid #b0bec5; border-radius: 4px;
+      padding: 10px 12px; background: #fff; transition: border-color 0.2s;
+    }
+    .date-box:focus-within { border-color: #1a237e; }
+    .date-box .icon { color: #1a237e; font-size: 14px; flex-shrink: 0; }
+    .date-box input[type="text"] {
+      border: none; outline: none; font-size: 14px;
+      color: #333; font-weight: 600; width: 100%;
+      font-family: Arial, sans-serif; background: transparent; cursor: pointer;
+    }
+    .select-box {
+      display: flex; align-items: center; gap: 8px;
+      border: 1.5px solid #b0bec5; border-radius: 4px;
+      padding: 10px 12px; background: #fff; transition: border-color 0.2s;
+    }
+    .select-box:focus-within { border-color: #1a237e; }
+    .select-box .icon { color: #1a237e; font-size: 14px; flex-shrink: 0; }
+    .select-box select {
+      border: none; outline: none; font-size: 14px;
+      color: #555; width: 100%;
+      font-family: Arial, sans-serif; background: transparent;
+      appearance: none; cursor: pointer;
+    }
+    .select-box .arrow { color: #1a237e; font-size: 12px; flex-shrink: 0; pointer-events: none; }
+
+    /* Row 3: Quota */
+    .row-quota { margin-bottom: 18px; width: calc(50% - 7px); }
+
+    /* Checkboxes */
+    .checkbox-row {
+      display: flex; flex-wrap: wrap;
+      gap: 8px 28px; margin-bottom: 20px;
+    }
+    .checkbox-item { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+    .checkbox-item input[type="checkbox"] {
+      width: 15px; height: 15px;
+      accent-color: #1a237e; cursor: pointer;
+    }
+    .checkbox-item span { font-size: 12px; font-weight: 700; color: #1a237e; }
+
+    /* Search button */
+    .search-btn {
+      display: block; margin: 0 auto;
+      background: #f57c00; color: #fff;
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.04em; padding: 12px 0;
+      width: 200px; border: none; border-radius: 6px;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 12px rgba(245,124,0,0.35);
+    }
+    .search-btn:hover { background: #e65100; transform: translateY(-2px); }
+    .search-btn:active { transform: translateY(0); }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-bar { overflow-x: auto; }
+      .header-left, .header-right { width: 60px; }
+      .header-left img { width: 48px; height: 48px; }
+      .main-text h1 { font-size: 28px; }
+      .main-text p { font-size: 13px; }
+
+      /* Card goes back to normal flow on mobile */
+      .card {
+        position: relative;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .main-bg { min-height: 320px; }
+      .row-from-to { grid-template-columns: 1fr; gap: 8px; }
+      .swap-btn { width: 100%; height: 30px; }
+      .row-date-class { grid-template-columns: 1fr; }
+      .row-quota { width: 100%; }
+      .search-btn { width: 100%; }
+    }

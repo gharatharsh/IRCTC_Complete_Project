@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC - Book Ticket</title>
+  <link rel="stylesheet" href="dayy01.css">
+</head>
+<body>
+
+<header class="header">
+
+  <div class="header-left">
+    <img src="https://www.irctc.co.in/nget/assets/images/secondry-logo.png"
+         alt="Indian Railways"
+         onerror="this.style.display='none'">
+  </div>
+
+  <div class="header-middle">
+    <div class="top-bar">
+      <span class="datetime" id="datetime">27-Jun-2026 [10:22:11]</span>
+      <span class="sep">|</span>
+      <button class="font-btn font-sm" onclick="changeFont(0)">A<sup>-</sup></button>
+      <span class="sep">|</span>
+      <button class="font-btn font-md" onclick="changeFont(1)">A</button>
+      <span class="sep">|</span>
+      <button class="font-btn font-lg" onclick="changeFont(2)">A<sup>+</sup></button>
+      <span class="sep">|</span>
+      <a href="#" class="hindi">हिंदी</a>
+    </div>
+    <div class="nav-bar">
+      <a href="#" class="nav-home">⌂</a>
+      <a href="#" class="nav-login">LOGIN / REGISTER</a>
+      <a href="#" class="nav-link nav-trains">TRAINS</a>
+      <a href="#" class="nav-link">MEALS</a>
+      <a href="#" class="nav-cashback">Upto 10% Cashback</a>
+      <a href="#" class="nav-link nav-ewallet">E-WALLET</a>
+      <a href="#" class="nav-link">ALERTS</a>
+      <a href="#" class="nav-link">OTHER SERVICES</a>
+      <a href="#" class="nav-link">CONTACT US</a>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <img src="secondry-right-logo.png"
+         alt="IRCTC"
+         onerror="this.style.display='none'">
+    <span class="irctc-text">IRCTC</span>
+  </div>
+
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="main">
+
+  <!-- Background train image -->
+  <img class="main-bg"
+       src="main-image.png"
+       alt="Indian Railways"
+       onerror="this.style.background='linear-gradient(135deg,#a8d8ea,#5a9bb5)'">
+
+  <!-- INDIAN RAILWAYS text — top right like real IRCTC -->
+  <div class="main-text">
+  </div>
+
+  <!-- CARD — overlays top left -->
+  <div class="card">
+
+    <div class="card-tabs">
+      <a href="#" class="card-tab">
+        <span class="tab-icon">📋</span> PNR STATUS
+      </a>
+      <a href="#" class="card-tab">
+        <span class="tab-icon">📄</span> CHARTS / VACANCY
+      </a>
+    </div>
+
+    <div class="card-body">
+      <h2 class="form-title">BOOK TICKET</h2>
+
+      <div class="row-from-to">
+        <div class="input-box">
+          <span class="icon">➤</span>
+          <input type="text" placeholder="From" id="fromStation">
+        </div>
+        <button class="swap-btn" onclick="swapStations()">⇄</button>
+        <div class="input-box">
+          <span class="icon">📍</span>
+          <input type="text" placeholder="To" id="toStation">
+        </div>
+      </div>
+
+      <div class="row-date-class">
+        <div class="date-wrapper">
+          <span class="date-label">DD/MM/YYYY *</span>
+          <div class="date-box">
+            <span class="icon">📅</span>
+            <input type="text" id="journeyDate" readonly>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <span class="date-label">&nbsp;</span>
+          <div class="select-box">
+            <span class="icon">💼</span>
+            <select>
+              <option>All Classes</option>
+              <option>Sleeper (SL)</option>
+              <option>3rd AC (3A)</option>
+              <option>2nd AC (2A)</option>
+              <option>1st AC (1A)</option>
+              <option>CC - Chair Car</option>
+              <option>2S - Second Sitting</option>
+            </select>
+            <span class="arrow">▼</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-quota">
+        <div class="select-box">
+          <span class="icon">⊞</span>
+          <select>
+            <option>GENERAL</option>
+            <option>TATKAL</option>
+            <option>LADIES</option>
+            <option>PREMIUM TATKAL</option>
+            <option>SENIOR CITIZEN</option>
+            <option>DEFENCE</option>
+          </select>
+          <span class="arrow">▼</span>
+        </div>
+      </div>
+
+      <div class="checkbox-row">
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Person With Disability Concession</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Flexible With Date</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Railway Pass Concession</span>
+        </label>
+      </div>
+
+      <button class="search-btn" onclick="searchTrains()">Search Trains</button>
+    </div>
+
+  </div><!-- end .card -->
+
+</div><!-- end .main -->
+
+
+<script>
+  // Live clock
+  function updateClock() {
+    const now  = new Date();
+    const dd   = String(now.getDate()).padStart(2,'0');
+    const mon  = ['Jan','Feb','Mar','Apr','May','Jun',
+                  'Jul','Aug','Sep','Oct','Nov','Dec'][now.getMonth()];
+    const yyyy = now.getFullYear();
+    const hh   = String(now.getHours()).padStart(2,'0');
+    const mm   = String(now.getMinutes()).padStart(2,'0');
+    const ss   = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('datetime').textContent =
+      `${dd}-${mon}-${yyyy} [${hh}:${mm}:${ss}]`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Font size
+  function changeFont(level) {
+    document.body.style.fontSize = ['13px','15px','17px'][level];
+  }
+
+  // Today's date
+  function setDate() {
+    const now  = new Date();
+    const dd   = String(now.getDate()).padStart(2,'0');
+    const mm   = String(now.getMonth()+1).padStart(2,'0');
+    const yyyy = now.getFullYear();
+    document.getElementById('journeyDate').value = `${dd}/${mm}/${yyyy}`;
+  }
+  setDate();
+
+  // Swap stations
+  function swapStations() {
+    const from = document.getElementById('fromStation');
+    const to   = document.getElementById('toStation');
+    [from.value, to.value] = [to.value, from.value];
+  }
+
+  // Search
+  function searchTrains() {
+    const from = document.getElementById('fromStation').value.trim();
+    const to   = document.getElementById('toStation').value.trim();
+    if (!from || !to) {
+      alert('Please enter both From and To stations.');
+      return;
+    }
+    alert(`Searching trains from "${from}" to "${to}"...`);
+  }
+</script>
+
+</body>
+</html>

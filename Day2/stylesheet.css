@@ -1,0 +1,477 @@
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    /* ════════════════════════════════
+       HEADER — same as Day 1
+    ════════════════════════════════ */
+    .header {
+      background: #ffffff;
+      border-bottom: 3px solid #b0b0b0;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+    }
+    .header-left {
+      display: flex; align-items: center; justify-content: center;
+      padding: 6px 10px; width: 90px; flex-shrink: 0;
+      margin-left: 50px;
+    }
+    .header-left img { width: 68px; height: 68px; object-fit: contain; }
+
+    .header-middle {
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .top-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 5px 20px; background: #fff;
+    }
+    .top-bar .datetime { font-size: 13px; font-weight: 700; color: #222; }
+    .top-bar .sep { color: #999; font-size: 13px; }
+    .top-bar .font-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: Arial, sans-serif; color: #333; padding: 0; line-height: 1;
+    }
+    .top-bar .font-btn:hover { color: #c00; }
+    .top-bar .font-sm { font-size: 11px; }
+    .top-bar .font-md { font-size: 14px; font-weight: 700; }
+    .top-bar .font-lg { font-size: 17px; font-weight: 700; }
+    .top-bar .hindi {
+      font-size: 14px; font-weight: 700; color: #1a237e; text-decoration: none;
+    }
+    .top-bar .hindi:hover { text-decoration: underline; color: #c00; }
+
+    .nav-bar {
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      padding: 0 12px; height: 42px; background: #fff;
+    }
+    .nav-home {
+      font-size: 17px; color: #444; text-decoration: none;
+      padding: 0 10px 0 0; display: flex; align-items: center;
+    }
+    .nav-home:hover { color: #c00; }
+    .nav-login {
+      background: #1a237e; color: #fff; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.04em; padding: 6px 14px; text-decoration: none;
+      border-radius: 3px; white-space: nowrap; margin-right: 10px;
+    }
+    .nav-login:hover { background: #0d1457; }
+    .nav-link {
+      font-size: 13px; font-weight: 600; color: #222; text-decoration: none;
+      padding: 0 10px; white-space: nowrap; height: 100%; display: flex; align-items: center;
+    }
+    .nav-link:hover { color: #c00; }
+    .nav-trains { color: #d32f2f; }
+    .nav-ewallet { color: #d32f2f; }
+    .nav-cashback {
+      background: #1a237e; color: #fff; font-size: 12px; font-weight: 600;
+      padding: 6px 12px; text-decoration: none; border-radius: 3px;
+      white-space: nowrap; margin: 0 6px;
+    }
+    .nav-cashback:hover { background: #0d1457; }
+
+    .header-right {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 6px 12px; width: 90px; flex-shrink: 0; gap: 2px;
+      margin-right: 50px;
+    }
+    .header-right img { width: 52px; height: 52px; object-fit: contain; }
+    .header-right .irctc-text { font-size: 13px; font-weight: 700; color: #1a237e; letter-spacing: 1px; }
+
+    /* Blue thick line below header */
+    .header-divider {
+      width: 100%;
+      height: 5px;
+      background: #1a237e;
+    }
+
+    /* ════════════════════════════════
+       PAGE LAYOUT — sidebar + content
+    ════════════════════════════════ */
+    .page-body {
+      display: flex;
+      align-items: flex-start;
+      min-height: calc(100vh - 90px);
+      background: #f0f0f0;
+    }
+
+    /* ════════════════════════════════
+       LEFT SIDEBAR — Refine Results
+    ════════════════════════════════ */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      min-height: 100%;
+      padding-bottom: 30px;
+    }
+
+    /* Refine Results header */
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .sidebar-header span {
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+    }
+    .remove-filter {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e65100;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .remove-filter:hover { text-decoration: underline; }
+
+    /* Filter section */
+    .filter-section {
+      border-bottom: 1px solid #eee;
+      padding: 12px 16px;
+    }
+    .filter-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .filter-section-header span {
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      letter-spacing: 0.06em;
+    }
+    .filter-section-header .select-all {
+      font-size: 12px;
+      color: #1a237e;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .filter-section-header .toggle-arrow {
+      font-size: 11px;
+      color: #666;
+      margin-left: 4px;
+    }
+
+    /* Journey Class checkboxes — 2 column grid */
+    .class-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 6px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .check-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: #1a237e;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-item span {
+      font-size: 12px;
+      color: #333;
+    }
+
+    /* Train Type — single column with colored squares */
+    .train-type-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .train-type-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .train-type-item input[type="checkbox"] {
+      width: 14px; height: 14px;
+      accent-color: #1a237e; cursor: pointer; flex-shrink: 0;
+    }
+    .type-color {
+      width: 14px; height: 14px; border-radius: 2px; flex-shrink: 0;
+    }
+    .train-type-item span { font-size: 13px; color: #333; font-weight: 500; }
+
+    /* ════════════════════════════════
+       RIGHT CONTENT — Results
+    ════════════════════════════════ */
+    .results-area {
+      flex: 1;
+      padding: 16px 20px;
+      min-width: 0;
+    }
+
+    /* Results summary row */
+    .results-summary {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .results-summary strong { color: #111; }
+    .results-summary .quota-tag {
+      color: #555;
+    }
+
+    /* Sort + Prev/Next row */
+    .sort-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sort-btn {
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+    .sort-btn:hover { background: #0d1457; }
+
+    .day-nav {
+      display: flex;
+      gap: 0;
+    }
+    .day-nav-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      color: #333;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .day-nav-btn:first-child { border-radius: 4px 0 0 4px; border-right: none; }
+    .day-nav-btn:last-child  { border-radius: 0 4px 4px 0; }
+    .day-nav-btn:hover { background: #f0f0f0; }
+
+    /* ════════════════════════════════
+       TRAIN CARD
+    ════════════════════════════════ */
+    .train-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    /* Card top row — train name, runs on, schedule link */
+    .train-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px 8px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .train-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+    }
+    .runs-on {
+      font-size: 13px;
+      color: #555;
+    }
+    .runs-on span {
+      display: inline-block;
+      margin: 0 2px;
+      font-weight: 500;
+    }
+    .runs-on .active-day { font-weight: 700; color: #111; }
+    .train-schedule-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1565c0;
+      text-decoration: none;
+      margin-left: auto;
+    }
+    .train-schedule-link:hover { text-decoration: underline; }
+
+    /* Timing row — depart | duration | arrive */
+    .train-timing {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 0;
+      border-bottom: 1px solid #eee;
+    }
+    .timing-depart {
+      flex: 1;
+    }
+    .timing-depart .time {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+    }
+    .timing-depart .station {
+      font-size: 13px;
+      color: #555;
+      margin-top: 3px;
+    }
+
+    .timing-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 0 24px;
+    }
+    .duration-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 120px;
+    }
+    .duration-line .line {
+      flex: 1;
+      height: 1px;
+      background: #aaa;
+    }
+    .duration-line .duration-text {
+      font-size: 12px;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .timing-arrive {
+      flex: 1;
+      text-align: right;
+    }
+    .timing-arrive .time {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+    }
+    .timing-arrive .station {
+      font-size: 13px;
+      color: #555;
+      margin-top: 3px;
+    }
+
+    /* Class availability row */
+    .class-avail-row {
+      display: flex;
+      gap: 0;
+      padding: 10px 16px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+    .class-avail-box {
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 8px 16px;
+      margin-right: 10px;
+      margin-bottom: 6px;
+      min-width: 120px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .class-avail-box:hover { border-color: #1a237e; }
+    .class-avail-box .class-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 4px;
+    }
+    .class-avail-box .avail-status {
+      font-size: 12px;
+      color: #1565c0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .avail-status .refresh-icon { font-size: 13px; }
+
+    /* Availability status colors */
+    .status-available { color: #2e7d32 !important; font-weight: 600; }
+    .status-wl        { color: #e65100 !important; font-weight: 600; }
+    .status-rac       { color: #f57f17 !important; font-weight: 600; }
+
+    /* NTES notice + Book Now row */
+    .card-footer {
+      padding: 10px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ntes-notice {
+      font-size: 13px;
+      color: #333;
+    }
+    .ntes-notice a {
+      color: #1565c0;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .ntes-notice a:hover { text-decoration: underline; }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .book-now-btn {
+      background: #f57c00;
+      color: #fff;
+      border: none;
+      padding: 9px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .book-now-btn:hover { background: #e65100; }
+    .other-dates-btn {
+      background: #fff;
+      color: #333;
+      border: 1.5px solid #aaa;
+      padding: 9px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .other-dates-btn:hover { background: #f5f5f5; }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 768px) {
+      .page-body { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+      .nav-bar { overflow-x: auto; }
+      .header-left, .header-right { width: 60px; }
+      .header-left img { width: 48px; height: 48px; }
+      .train-timing { flex-direction: column; gap: 12px; }
+      .timing-arrive { text-align: left; }
+    }

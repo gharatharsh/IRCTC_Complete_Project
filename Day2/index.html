@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC - Train Search Results</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header class="header">
+  <div class="header-left">
+    <img src="/Day1/secondry-logo.png"
+         alt="Indian Railways" onerror="this.style.display='none'">
+  </div>
+
+  <div class="header-middle">
+    <div class="top-bar">
+      <span class="datetime" id="datetime">28-Jun-2026 [23:03:15]</span>
+      <span class="sep">|</span>
+      <button class="font-btn font-sm" onclick="changeFont(0)">A<sup>-</sup></button>
+      <span class="sep">|</span>
+      <button class="font-btn font-md" onclick="changeFont(1)">A</button>
+      <span class="sep">|</span>
+      <button class="font-btn font-lg" onclick="changeFont(2)">A<sup>+</sup></button>
+      <span class="sep">|</span>
+      <a href="#" class="hindi">हिंदी</a>
+    </div>
+    <div class="nav-bar">
+      <a href="#" class="nav-home">⌂</a>
+      <a href="#" class="nav-login">LOGIN / REGISTER</a>
+      <a href="#" class="nav-link nav-trains">TRAINS</a>
+      <a href="#" class="nav-link">MEALS</a>
+      <a href="#" class="nav-cashback">LOYALTY</a>
+      <a href="#" class="nav-link nav-ewallet">E-WALLET</a>
+      <a href="#" class="nav-link">ALERTS</a>
+      <a href="#" class="nav-link">OTHER SERVICES</a>
+      <a href="#" class="nav-link">CONTACT US</a>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <img src="/Day1/secondry-right-logo.png"
+         alt="IRCTC" onerror="this.style.display='none'">
+    <span class="irctc-text">IRCTC</span>
+  </div>
+</header>
+
+<!-- Blue thick divider -->
+<div class="header-divider"></div>
+
+<!-- ════════ PAGE BODY ════════ -->
+<div class="page-body">
+
+  <!-- ── LEFT SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+      <span>Refine Results</span>
+      <a class="remove-filter" onclick="removeFilters()">Remove Filter</a>
+    </div>
+
+    <!-- JOURNEY CLASS filter -->
+    <div class="filter-section">
+      <div class="filter-section-header">
+        <span>JOURNEY CLASS</span>
+        <span><span class="select-all" onclick="selectAllClass()">Select All</span> <span class="toggle-arrow">▲</span></span>
+      </div>
+      <div class="class-grid">
+        <label class="check-item">
+          <input type="checkbox" checked> <span>AC First Class (1A)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>AC 2 Tier (2A)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>Second Sitting (2S)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>AC 3 Tier (3A)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>AC 3 Economy (3E)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>AC Chair car (CC)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>Exec. Chair Car (EC)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>Vistadome AC (EV)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox"> <span>Sleeper (SL)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- TRAIN TYPE filter -->
+    <div class="filter-section">
+      <div class="filter-section-header">
+        <span>TRAIN TYPE</span>
+        <span><span class="select-all" onclick="selectAllType()">Select All</span> <span class="toggle-arrow">▲</span></span>
+      </div>
+      <div class="train-type-list">
+        <label class="train-type-item">
+          <input type="checkbox" checked>
+          <span class="type-color" style="background:#888;"></span>
+          <span>OTHER</span>
+        </label>
+        <label class="train-type-item">
+          <input type="checkbox" checked>
+          <span class="type-color" style="background:#1565c0;"></span>
+          <span>SHATABDI</span>
+        </label>
+        <label class="train-type-item">
+          <input type="checkbox" checked>
+          <span class="type-color" style="background:#c62828;"></span>
+          <span>SPECIAL</span>
+        </label>
+        <label class="train-type-item">
+          <input type="checkbox" checked>
+          <span class="type-color" style="background:#f9a825;"></span>
+          <span>SPECIAL TATKAL</span>
+        </label>
+        <label class="train-type-item">
+          <input type="checkbox" checked>
+          <span class="type-color" style="background:#888;"></span>
+          <span>OTHER</span>
+        </label>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── RIGHT RESULTS AREA ── -->
+  <main class="results-area">
+
+    <!-- Results summary -->
+    <div class="results-summary">
+      13 Results for <strong>MUMBAI CENTRAL → PUNE JN</strong> | <strong>Tue, 30 Jun 2026</strong>
+      <span class="quota-tag">For Quota | Tatkal</span>
+    </div>
+
+    <!-- Sort + Day nav row -->
+    <div class="sort-row">
+      <button class="sort-btn">Sort By | Departure</button>
+      <div class="day-nav">
+        <button class="day-nav-btn" onclick="prevDay()">❮ Previous Day</button>
+        <button class="day-nav-btn" onclick="nextDay()">Next Day ❯</button>
+      </div>
+    </div>
+
+    <!-- ── TRAIN CARD 1 ── -->
+    <div class="train-card">
+      <div class="train-card-top">
+        <span class="train-name">INDB DAUND EXP (22944)</span>
+        <span class="runs-on">
+          Runs On: 
+          <span class="active-day">M</span>
+          <span class="active-day">T</span>
+          <span class="active-day">W</span>
+          <span class="active-day">T</span>
+          <span class="active-day">F</span>
+          <span class="active-day">S</span>
+          <span class="active-day">S</span>
+        </span>
+        <a href="#" class="train-schedule-link">Train Schedule</a>
+      </div>
+
+      <div class="train-timing">
+        <div class="timing-depart">
+          <div class="time">04:35</div>
+          <div class="station">VASAI ROAD | Tue, 30 Jun</div>
+        </div>
+        <div class="timing-middle">
+          <div class="duration-line">
+            <div class="line"></div>
+            <span class="duration-text">04:15</span>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="timing-arrive">
+          <div class="time">08:50</div>
+          <div class="station">PUNE JN | Tue, 30 Jun</div>
+        </div>
+      </div>
+
+      <div class="class-avail-row">
+        <div class="class-avail-box">
+          <div class="class-name">Sleeper (SL)</div>
+          <div class="avail-status">Refresh <span class="refresh-icon">↻</span></div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC 3 Tier (3A)</div>
+          <div class="avail-status">Refresh <span class="refresh-icon">↻</span></div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC 2 Tier (2A)</div>
+          <div class="avail-status">Refresh <span class="refresh-icon">↻</span></div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC First Class (1A)</div>
+          <div class="avail-status">Refresh <span class="refresh-icon">↻</span></div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="ntes-notice">
+          Please check <a href="#">NTES website</a> or <a href="#">NTES app</a> for actual time before boarding
+        </div>
+        <div class="card-actions">
+          <button class="book-now-btn">Book Now</button>
+          <button class="other-dates-btn">OTHER DATES</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TRAIN CARD 2 ── -->
+    <div class="train-card">
+      <div class="train-card-top">
+        <span class="train-name">LTT VSKP EXPRESS (12583)</span>
+        <span class="runs-on">
+          Runs On:
+          <span class="active-day">M</span>
+          <span class="active-day">T</span>
+          <span class="active-day">W</span>
+          <span class="active-day">T</span>
+          <span class="active-day">F</span>
+          <span class="active-day">S</span>
+          <span class="active-day">S</span>
+        </span>
+        <a href="#" class="train-schedule-link">Train Schedule</a>
+      </div>
+
+      <div class="train-timing">
+        <div class="timing-depart">
+          <div class="time">06:10</div>
+          <div class="station">MUMBAI CENTRAL | Tue, 30 Jun</div>
+        </div>
+        <div class="timing-middle">
+          <div class="duration-line">
+            <div class="line"></div>
+            <span class="duration-text">03:35</span>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="timing-arrive">
+          <div class="time">09:45</div>
+          <div class="station">PUNE JN | Tue, 30 Jun</div>
+        </div>
+      </div>
+
+      <div class="class-avail-row">
+        <div class="class-avail-box">
+          <div class="class-name">Sleeper (SL)</div>
+          <div class="avail-status status-available">AVBL 42</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC 3 Tier (3A)</div>
+          <div class="avail-status status-wl">WL# 18</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC 2 Tier (2A)</div>
+          <div class="avail-status status-available">AVBL 6</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC First Class (1A)</div>
+          <div class="avail-status status-rac">RAC 3</div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="ntes-notice">
+          Please check <a href="#">NTES website</a> or <a href="#">NTES app</a> for actual time before boarding
+        </div>
+        <div class="card-actions">
+          <button class="book-now-btn">Book Now</button>
+          <button class="other-dates-btn">OTHER DATES</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TRAIN CARD 3 ── -->
+    <div class="train-card">
+      <div class="train-card-top">
+        <span class="train-name">DECCAN EXPRESS (11007)</span>
+        <span class="runs-on">
+          Runs On:
+          <span class="active-day">M</span>
+          <span class="active-day">T</span>
+          <span class="active-day">W</span>
+          <span class="active-day">T</span>
+          <span class="active-day">F</span>
+          <span class="active-day">S</span>
+          <span class="active-day">S</span>
+        </span>
+        <a href="#" class="train-schedule-link">Train Schedule</a>
+      </div>
+
+      <div class="train-timing">
+        <div class="timing-depart">
+          <div class="time">07:15</div>
+          <div class="station">MUMBAI CENTRAL | Tue, 30 Jun</div>
+        </div>
+        <div class="timing-middle">
+          <div class="duration-line">
+            <div class="line"></div>
+            <span class="duration-text">03:45</span>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="timing-arrive">
+          <div class="time">11:00</div>
+          <div class="station">PUNE JN | Tue, 30 Jun</div>
+        </div>
+      </div>
+
+      <div class="class-avail-row">
+        <div class="class-avail-box">
+          <div class="class-name">Sleeper (SL)</div>
+          <div class="avail-status status-available">AVBL 118</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC Chair car (CC)</div>
+          <div class="avail-status status-available">AVBL 34</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC 2 Tier (2A)</div>
+          <div class="avail-status status-wl">WL# 5</div>
+        </div>
+        <div class="class-avail-box">
+          <div class="class-name">AC First Class (1A)</div>
+          <div class="avail-status status-available">AVBL 2</div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="ntes-notice">
+          Please check <a href="#">NTES website</a> or <a href="#">NTES app</a> for actual time before boarding
+        </div>
+        <div class="card-actions">
+          <button class="book-now-btn">Book Now</button>
+          <button class="other-dates-btn">OTHER DATES</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- end page-body -->
+
+<script>
+  // Live clock
+  function updateClock() {
+    const now  = new Date();
+    const dd   = String(now.getDate()).padStart(2,'0');
+    const mon  = ['Jan','Feb','Mar','Apr','May','Jun',
+                  'Jul','Aug','Sep','Oct','Nov','Dec'][now.getMonth()];
+    const yyyy = now.getFullYear();
+    const hh   = String(now.getHours()).padStart(2,'0');
+    const mm   = String(now.getMinutes()).padStart(2,'0');
+    const ss   = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('datetime').textContent =
+      `${dd}-${mon}-${yyyy} [${hh}:${mm}:${ss}]`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Font size
+  function changeFont(level) {
+    document.body.style.fontSize = ['13px','15px','17px'][level];
+  }
+
+  // Select all class checkboxes
+  function selectAllClass() {
+    document.querySelectorAll('.class-grid input[type="checkbox"]')
+      .forEach(cb => cb.checked = true);
+  }
+
+  // Select all train type checkboxes
+  function selectAllType() {
+    document.querySelectorAll('.train-type-list input[type="checkbox"]')
+      .forEach(cb => cb.checked = true);
+  }
+
+  // Remove filters
+  function removeFilters() {
+    document.querySelectorAll('.sidebar input[type="checkbox"]')
+      .forEach(cb => cb.checked = false);
+  }
+
+  // Previous / Next day buttons
+  function prevDay() { alert('Loading Previous Day results...'); }
+  function nextDay() { alert('Loading Next Day results...'); }
+</script>
+
+</body>
+</html>

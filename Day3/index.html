@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Railways Passenger Reservation Enquiry</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-strip"></div>
+
+  <!-- BLUE TOP NAVIGATION -->
+  <nav class="top-nav">
+    <span class="brand">Indian Railways Enquiry</span>
+    <a href="#">PNR Enquiry</a>
+    <a href="#">Reserved Train Between Stations</a>
+    <a href="#" style="font-weight:600;">Seat Availability</a>
+    <a href="#">Fare Enquiry</a>
+    <a href="#">Reserved Train Schedule</a>
+  </nav>
+
+  <!-- HEADER: logos + title -->
+  <div class="page-header">
+    <div class="logo-left">
+      <img src="https://www.irctc.co.in/nget/assets/images/secondry-logo.png"
+           alt="Indian Railways" onerror="this.style.display='none'">
+    </div>
+    <div class="title-block">
+      <h1>INDIAN RAILWAYS PASSENGER RESERVATION ENQUIRY</h1>
+      <p>Please help Indian railways and government of India in moving towards a digitized and cashless economy. Eradicate black money.</p>
+    </div>
+    <div class="logo-right">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Indian_Railways_CRIS_logo.svg/200px-Indian_Railways_CRIS_logo.svg.png"
+           alt="CRIS" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="hindi-row">
+    <a href="#">हिंदी</a>
+  </div>
+
+  <!-- MAIN BODY -->
+  <div class="main-body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <button class="sidebar-btn">Services</button>
+      <button class="sidebar-btn">Information</button>
+    </div>
+
+    <!-- FORM PANEL -->
+    <div class="form-panel">
+
+      <div class="panel-header">Accommodation Availability Enquiry on Trains till Departure</div>
+
+      <div class="panel-body">
+
+        <div class="timestamp" id="timestamp">30-Jun-2026 [15:03:13 IST]</div>
+
+        <form id="availabilityForm">
+
+          <div class="form-row">
+            <label>Enter Train Number</label>
+            <div class="field-wrap">
+              <input type="text" id="trainNumber" placeholder="Train Number">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Enter Journey Date</label>
+            <div class="date-field-wrap">
+              <input type="text" id="journeyDate" readonly>
+              <span class="cal-icon">🗓️</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Enter Source Station</label>
+            <div class="field-wrap">
+              <input type="text" id="sourceStation" placeholder="Enter Source Station">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Enter Destination Station</label>
+            <div class="field-wrap">
+              <input type="text" id="destStation" placeholder="Enter Destination Station">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Enter Class</label>
+            <div class="field-wrap">
+              <select id="classSelect">
+                <option>SLEEPER CLASS</option>
+                <option>AC 3 TIER</option>
+                <option>AC 2 TIER</option>
+                <option>AC FIRST CLASS</option>
+                <option>AC CHAIR CAR</option>
+                <option>SECOND SITTING</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Enter Quota</label>
+            <div class="field-wrap">
+              <select id="quotaSelect">
+                <option>General Quota</option>
+                <option>Tatkal Quota</option>
+                <option>Ladies Quota</option>
+                <option>Premium Tatkal</option>
+                <option>Senior Citizen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="get-availability-btn">Get Availability</button>
+          </div>
+
+        </form>
+
+        <!-- Result box shown after search -->
+        <div class="result-box" id="resultBox">
+          <div class="result-header">Availability Result</div>
+          <div class="result-body" id="resultBody">
+            <!-- filled by JS -->
+          </div>
+        </div>
+
+        <!-- Ad placeholder like screenshot -->
+        <div class="ad-placeholder">
+          <span class="ad-tag">MoMAGIC</span>
+          Advertisement
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Live timestamp
+    function updateTimestamp() {
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mon = ['Jan','Feb','Mar','Apr','May','Jun',
+                   'Jul','Aug','Sep','Oct','Nov','Dec'][now.getMonth()];
+      const yyyy = now.getFullYear();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('timestamp').textContent =
+        `${dd}-${mon}-${yyyy} [${hh}:${mm}:${ss} IST]`;
+    }
+    updateTimestamp();
+    setInterval(updateTimestamp, 1000);
+
+    // Default journey date = today, DD-MM-YYYY
+    function setDefaultDate() {
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      document.getElementById('journeyDate').value = `${dd}-${mm}-${yyyy}`;
+    }
+    setDefaultDate();
+
+    // Form submit -> show fake result
+    document.getElementById('availabilityForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const trainNumber = document.getElementById('trainNumber').value.trim();
+      const source = document.getElementById('sourceStation').value.trim();
+      const dest = document.getElementById('destStation').value.trim();
+      const cls = document.getElementById('classSelect').value;
+      const quota = document.getElementById('quotaSelect').value;
+      const date = document.getElementById('journeyDate').value;
+
+      if (!trainNumber || !source || !dest) {
+        alert('Please fill Train Number, Source and Destination Station.');
+        return;
+      }
+
+      const resultBody = document.getElementById('resultBody');
+      resultBody.innerHTML = `
+        <div class="result-row"><span class="label">Train Number</span><span class="value">${trainNumber}</span></div>
+        <div class="result-row"><span class="label">Journey Date</span><span class="value">${date}</span></div>
+        <div class="result-row"><span class="label">From</span><span class="value">${source.toUpperCase()}</span></div>
+        <div class="result-row"><span class="label">To</span><span class="value">${dest.toUpperCase()}</span></div>
+        <div class="result-row"><span class="label">Class</span><span class="value">${cls}</span></div>
+        <div class="result-row"><span class="label">Quota</span><span class="value">${quota}</span></div>
+        <div class="result-row"><span class="label">Availability</span><span class="value status-available">AVAILABLE - 42</span></div>
+      `;
+
+      document.getElementById('resultBox').classList.add('show');
+    });
+  </script>
+
+</body>
+</html>

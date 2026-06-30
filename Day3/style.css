@@ -1,0 +1,300 @@
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    /* ── TOP DARK STRIP ── */
+    .top-strip {
+      height: 6px;
+      background: #333;
+      width: 100%;
+    }
+
+    /* ── BLUE NAV BAR ── */
+    .top-nav {
+      background: #3d7ab5;
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      padding: 0 32px;
+      height: 56px;
+    }
+    .top-nav .brand {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 20px;
+    }
+    .top-nav a {
+      color: #fff;
+      font-size: 15px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .top-nav a:hover { opacity: 0.8; text-decoration: underline; }
+
+    /* ── HEADER SECTION: logos + title ── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 28px 32px 6px;
+      flex-wrap: wrap;
+    }
+    .page-header .logo-left img {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+    }
+    .page-header .title-block {
+      text-align: center;
+    }
+    .page-header .title-block h1 {
+      font-size: 26px;
+      font-weight: 400;
+      color: #333;
+      letter-spacing: 0.01em;
+    }
+    .page-header .title-block p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+    .page-header .logo-right img {
+      width: 90px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ── HINDI LINK ── */
+    .hindi-row {
+      padding: 6px 32px 0 32px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .hindi-row a {
+      color: #2c6fad;
+      font-size: 15px;
+      text-decoration: none;
+    }
+    .hindi-row a:hover { text-decoration: underline; }
+
+    /* ── MAIN BODY: sidebar + form ── */
+    .main-body {
+      display: flex;
+      gap: 0;
+      max-width: 1320px;
+      margin: 12px auto 0;
+      padding: 0 32px 60px;
+      align-items: flex-start;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-right: 30px;
+    }
+    .sidebar-btn {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 14px 18px;
+      font-size: 15px;
+      color: #333;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .sidebar-btn:hover { background: #e4e4e4; }
+
+    /* FORM PANEL */
+    .form-panel {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .panel-header {
+      background: #3d7ab5;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 400;
+      padding: 16px 24px;
+    }
+
+    .panel-body {
+      padding: 18px 24px 36px;
+    }
+
+    .timestamp {
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 22px;
+    }
+
+    /* FORM ROWS */
+    .form-row {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      align-items: center;
+      max-width: 700px;
+      margin: 0 auto 18px;
+      gap: 16px;
+    }
+    .form-row label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+      text-align: right;
+    }
+    .form-row .field-wrap {
+      position: relative;
+      max-width: 280px;
+    }
+    .form-row input[type="text"],
+    .form-row select {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      color: #555;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      outline: none;
+    }
+    .form-row input[type="text"]:focus,
+    .form-row select:focus {
+      border-color: #3d7ab5;
+    }
+    .form-row input::placeholder { color: #999; }
+
+    .form-row select {
+      appearance: auto;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* date field with calendar icon */
+    .date-field-wrap {
+      position: relative;
+      max-width: 280px;
+    }
+    .date-field-wrap input {
+      width: 100%;
+      padding: 9px 34px 9px 12px;
+      font-size: 14px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      color: #333;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+    .date-field-wrap .cal-icon {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      background: #e74c3c;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* GET AVAILABILITY BUTTON */
+    .btn-row {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .get-availability-btn {
+      background: #3d7ab5;
+      color: #fff;
+      border: none;
+      padding: 11px 32px;
+      font-size: 15px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .get-availability-btn:hover { background: #2c6394; }
+
+    /* RESULT BOX (hidden initially) */
+    .result-box {
+      max-width: 700px;
+      margin: 30px auto 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      display: none;
+    }
+    .result-box.show { display: block; }
+    .result-header {
+      background: #3d7ab5;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .result-body {
+      padding: 16px 20px;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-row .label { color: #555; }
+    .result-row .value { font-weight: 700; color: #222; }
+    .status-available { color: #2e7d32; }
+    .status-wl { color: #e65100; }
+
+    /* AD PLACEHOLDER */
+    .ad-placeholder {
+      max-width: 700px;
+      margin: 36px auto 0;
+      background: #000;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 13px;
+      position: relative;
+      border-radius: 2px;
+    }
+    .ad-tag {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      color: #4fc3f7;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .top-nav { overflow-x: auto; gap: 24px; }
+      .main-body { flex-direction: column; }
+      .sidebar { flex-direction: row; width: 100%; margin-right: 0; margin-bottom: 20px; }
+      .sidebar-btn { flex: 1; }
+      .form-row { grid-template-columns: 1fr; text-align: left; gap: 6px; }
+      .form-row label { text-align: left; }
+      .form-row .field-wrap, .date-field-wrap { max-width: 100%; }
+    }
